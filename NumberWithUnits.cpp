@@ -5,17 +5,19 @@
 using namespace std;
 using namespace ariel;
 
+const double EPS = 0.001;
+
 namespace ariel{
     
     static map<string, map<string, double> > conversionMap;
 
-    NumberWithUnits :: NumberWithUnits(double value, string type){
+    NumberWithUnits :: NumberWithUnits(double value, const string& type){
         conversionMap.at(type); // check if type found in the map.
         this->val=value;
         this->unit=type;
     }
 
-    double conversion(double value, const string from, const string to){
+    double conversion(double value, const string& from, const string& to){
         if(from == to) {return value;}
         if(conversionMap[from][to] == 0){
             throw invalid_argument{"Units do not match - ["+from+"] cannot be converted to ["+to+"]"};
@@ -25,7 +27,8 @@ namespace ariel{
 
 
     void NumberWithUnits ::read_units(ifstream& units_file){
-        double num1, num2;
+        double num1=0; 
+        double num2=0;
         string unit1, unit2, eq;
         while(units_file >> num1 >> unit1 >> eq >> num2 >> unit2){
 
@@ -151,8 +154,6 @@ namespace ariel{
     }
 
     //------------boolean operators---------------//
-
-    static double EPS = 0.001;
 
     bool operator>(const NumberWithUnits& n1, const NumberWithUnits& n2){
         return (n1.val > conversion(n2.val, n2.unit, n1.unit));
