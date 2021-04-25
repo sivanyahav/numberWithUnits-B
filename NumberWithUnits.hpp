@@ -11,7 +11,7 @@ namespace ariel{
         string unit;
 
     public:
-        NumberWithUnits(double value, string type);
+        NumberWithUnits(double value, const string& type);
 
         double getValue() const{
             return val;
