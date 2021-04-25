@@ -1,0 +1,9 @@
+1 km = 1000 m
+1 m = 100 cm
+1 l = 1000 ml
+1 day = 24 hour
+1 year = 365 day
+1 hour = 60 min
+1 min = 60 sec
+1 EUR = 1.19 USD
+1 USD = 3.33 ILS
