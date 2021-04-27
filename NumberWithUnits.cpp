@@ -69,8 +69,7 @@ namespace ariel{
         double val=0;
         string type;
         char c='0';
-        is >> val;
-        is >> c ;
+        is >> val >> c;
         while(c!=']'){
             if(c!='['){
                 type.insert(type.end(),c);
