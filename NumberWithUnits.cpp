@@ -51,10 +51,8 @@ namespace ariel{
     }
 
      void NumberWithUnits :: print(){
-
         for(auto& unit1 : conversionMap){
-            for (auto& unit2 : unit1.second)
-            {
+            for (auto& unit2 : unit1.second){
                cout<< unit1.first << " " << unit2.first << " "<<unit2.second<< endl;
             }
         }
@@ -68,20 +66,20 @@ namespace ariel{
     }
 
     std::istream &operator>>(std::istream &is, NumberWithUnits &n) {
-        double temp_val=0;
-        std::string temp_type;
-        char c=']';
-        is >> temp_val;
+        double val=0;
+        string type;
+        char c='0';
+        is >> val;
         is >> c ;
         while(c!=']'){
             if(c!='['){
-                temp_type.insert(temp_type.end(),c);
+                type.insert(type.end(),c);
             }
             is>>c;
         }
-       if(conversionMap[temp_type].empty()){throw invalid_argument{"unit doesnt exist"};};
-        n.val=temp_val;
-        n.unit=temp_type;
+       if(conversionMap[type].empty()){throw invalid_argument{"unit doesnt exist"};};
+        n.val=val;
+        n.unit=type;
         return is;
     }
 
